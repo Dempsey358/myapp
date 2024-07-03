@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OAuth Callback</title>
 </head>
 <body>
     <h1>OAuth Callback</h1>
     <p>If you see this page, the redirect worked!</p>
+    <p id="auth-code"></p>
+
+    <script>
+        // URLパラメータから認証コードを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const authCode = urlParams.get('code');
+
+        // 認証コードを表示
+        if (authCode) {
+            document.getElementById('auth-code').innerText = `Authorization Code: ${authCode}`;
+        } else {
+            document.getElementById('auth-code').innerText = 'Authorization code not found';
+        }
+    </script>
 </body>
 </html>
